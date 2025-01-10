@@ -8,7 +8,22 @@
  * @param {() => Promise<any>} fallback - primary 실패 시 호출할 대체 함수
  * @returns {Promise<any>} - primary 혹은 fallback의 결과를 담은 Promise
  */
-async function getDataWithFallback(primary, fallback) {}
+async function getDataWithFallback(primary, fallback) {
+    try{
+        return await primary();
+    } catch(err){
+        return await fallback();
+    }
+}
+
+// ?
+async function primary(){
+
+}
+// ?
+async function fallback(){
+
+}
 
 // export를 수정하지 마세요.
 export { getDataWithFallback };

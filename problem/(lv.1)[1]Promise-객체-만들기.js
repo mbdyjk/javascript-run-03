@@ -7,7 +7,10 @@
  */
 
 // TODO: returnHello 함수를 작성하세요.
-function returnHello() {}
+function returnHello() 
+{
+    return Promise.resolve("Hello");
+}
 
 // export를 수정하지 마세요.
 export { returnHello };

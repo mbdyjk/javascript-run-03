@@ -10,8 +10,21 @@
  * @param {number} ms - 시간 (예: 1000ms)
  * @returns {Promise<any>} - 먼저 완료된 Promise의 결과를 반환하는 Promise
  */
+// 매우매우 어렵다 race
+async function timeOut(promise, ms) {
+    const timeoutPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject("timeout")
+        },ms);
+    });
 
-async function timeOut(promise, ms) {}
+    try{
+        const answer = await Promise.race([promise, timeoutPromise]);
+        return answer;
+    } catch(err){
+        throw err;
+    }
+}
 
 // export를 수정하지 마세요.
 export { timeOut };
